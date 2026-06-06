@@ -3,7 +3,7 @@ abstract class BaseUrl {
 
   /// `BaseUrl`: chzzk login page.
   static const String naverLogin =
-      'https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fchzzk.naver.com%2F&locale=ko_KR&svctype=1&disposable=';
+      'https://nid.naver.com/nidlogin.login?mode=number&url=https%3A%2F%2Fchzzk.naver.com%2F&locale=ko_KR&svctype=1';
 
   /// `BaseUrl`: naver game vi the user data.
   static const String naverGame = 'https://comm-api.game.naver.com/nng_main';

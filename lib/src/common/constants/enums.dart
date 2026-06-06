@@ -55,10 +55,7 @@ enum KeyboardLanguage {
 }
 
 enum LoginStep {
-  id,
-  password,
-  passwordAgain,
-  captcha,
+  otp,
 }
 
 enum VideoSortType {

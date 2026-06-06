@@ -22,25 +22,21 @@ mixin class AuthEvent {
     WidgetRef ref, {
     required BuildContext context,
     required InAppWebViewController controller,
-    required LoginStep loginStep,
   }) async {
-    if (loginStep == LoginStep.passwordAgain ||
-        loginStep == LoginStep.captcha) {
-      final currentPath = await controller.getUrl();
-      final curretPathStr = currentPath.toString();
+    final currentPath = await controller.getUrl();
+    final currentPathStr = currentPath.toString();
 
-      if (curretPathStr == "https://chzzk.naver.com/" ||
-          curretPathStr == "https://m.chzzk.naver.com") {
-        authControllerInvalidate(ref);
-        userControllerInvalidate(ref);
+    if (currentPathStr == "https://chzzk.naver.com/" ||
+        currentPathStr == "https://m.chzzk.naver.com") {
+      authControllerInvalidate(ref);
+      userControllerInvalidate(ref);
 
-        if (context.mounted) {
-          context.goTo(
-            context: context,
-            currentLocation: AppRoute.auth,
-            appRoute: AppRoute.home,
-          );
-        }
+      if (context.mounted) {
+        context.goTo(
+          context: context,
+          currentLocation: AppRoute.auth,
+          appRoute: AppRoute.home,
+        );
       }
     }
   }
@@ -50,50 +46,11 @@ mixin class AuthEvent {
     required InAppWebViewController? controller,
     required String inputText,
   }) async {
-    final step = ref.read(loginStepControllerProvider);
-
     if (inputText.isNotEmpty && controller != null) {
-      switch (step) {
-        case LoginStep.id:
-          // input id
-          await _runJS(controller, NaverLoginSource.inputId(inputText));
-          // reset input
-          _resetInput(ref);
-          // change step
-          _changeStep(ref, LoginStep.password);
-          break;
-
-        case LoginStep.password:
-          // input password
-          await _runJS(controller, NaverLoginSource.inputPassword(inputText));
-          // click login
-          await _runJS(controller, NaverLoginSource.clickLoginButton);
-          // change step (without reset)
-          _changeStep(ref, LoginStep.passwordAgain);
-          // try sign in
-          await _trySignIn(ref);
-          break;
-
-        case LoginStep.passwordAgain:
-          // input password again
-          await _runJS(controller, NaverLoginSource.inputPassword(inputText));
-          // reset input
-          _resetInput(ref);
-          // change step (without reset)
-          _changeStep(ref, LoginStep.captcha);
-          // Focus to CAPTCHA
-          await _runJS(controller, NaverLoginSource.scrollToCaptcha);
-          break;
-
-        case LoginStep.captcha:
-          // input captcha answer
-          await _runJS(controller, NaverLoginSource.inputCaptcha(inputText));
-          // click login
-          await _runJS(controller, NaverLoginSource.clickLoginButton);
-          // try sign in
-          await _trySignIn(ref);
-          break;
-      }
+      await _runJS(controller, NaverLoginSource.inputOtp(inputText));
+      await _runJS(controller, NaverLoginSource.clickOtpLoginButton);
+      _resetInput(ref);
+      await _trySignIn(ref);
     }
   }
 
@@ -116,10 +73,6 @@ mixin class AuthEvent {
               .notifier,
         )
         .reset();
-  }
-
-  void _changeStep(WidgetRef ref, LoginStep step) {
-    ref.read(loginStepControllerProvider.notifier).update(step);
   }
 
   Future<void> _trySignIn(WidgetRef ref) async {

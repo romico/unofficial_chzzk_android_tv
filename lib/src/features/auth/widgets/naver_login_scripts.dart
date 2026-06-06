@@ -19,31 +19,12 @@ var smartLevel = document.getElementById('smart_LEVEL');
 if (smartLevel) smartLevel.value = "-1";
 """;
 
-  static String inputId(String id) => """
-var idField = document.getElementById('id');
-idField.value = '$id';
+  static String inputOtp(String otp) => """
+var otpField = document.getElementById('disposable');
+otpField.value = '$otp';
 """;
 
-  static String inputPassword(String password) => """
-var passwordField = document.getElementById('pw');
-passwordField.value = '$password';
-""";
-
-  static String scrollToCaptcha = """
-(() => {
-  const img = document.getElementById('captchaimg');
-  if (!img) return;
-  const y = img.getBoundingClientRect().top + window.pageYOffset;
-  window.scrollTo({ top: y, left: 0, behavior: 'auto' });
-})();
-""";
-
-  static String inputCaptcha(String captcha) => """
-var captchaField = document.getElementById('captcha');
-captchaField.value = '$captcha';
-""";
-
-  static String clickLoginButton = """
-document.querySelector('[id="log.login"]').click();
+  static String clickOtpLoginButton = """
+document.querySelector('[id="otnlog.login"]').click();
 """;
 }

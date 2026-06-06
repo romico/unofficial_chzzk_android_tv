@@ -68,7 +68,7 @@ class AuthController extends _$AuthController {
 class LoginStepController extends _$LoginStepController {
   @override
   LoginStep build() {
-    return LoginStep.id;
+    return LoginStep.otp;
   }
 
   void update(LoginStep step) {

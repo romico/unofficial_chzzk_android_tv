@@ -116,7 +116,8 @@ class VodPlayerController extends _$VodPlayerController {
       // _startWatchContinuedTimer();
 
       return controller;
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('[VodPlayer] init error: $e\n$st');
       return null;
     }
   }

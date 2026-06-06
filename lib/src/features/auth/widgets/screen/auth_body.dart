@@ -86,14 +86,11 @@ class _AuthBodyState extends ConsumerState<_AuthBody>
         await toggleIpSecureSwitch(_controller!);
         await toggleKeepLogin(_controller!);
 
-        final loginStep = getLoginStep(ref);
-
         if (context.mounted) {
           await checkLoginStateAndGoToHomeScreen(
             ref,
             context: context,
             controller: controller,
-            loginStep: loginStep,
           );
         }
       },
