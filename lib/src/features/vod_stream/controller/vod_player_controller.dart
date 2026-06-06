@@ -14,6 +14,7 @@ import '../../settings/controller/stream_setting_controller.dart';
 import 'vod_chat_controller.dart';
 import 'vod_playlist_controller.dart';
 import 'vod_seek_indicator_controller.dart';
+import 'package:flutter/foundation.dart';
 
 part 'vod_player_controller.g.dart';
 
