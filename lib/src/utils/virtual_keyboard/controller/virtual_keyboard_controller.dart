@@ -133,4 +133,6 @@ mixin class VirtualKeyboardState {
           : VirtualKeyboardData.qwertyUpperCaseKoreanKeys,
     };
   }
+
+  List<String> getNumericKeyboardKeys() => VirtualKeyboardData.numericKeys;
 }

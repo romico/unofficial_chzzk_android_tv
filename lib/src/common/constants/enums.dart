@@ -54,6 +54,11 @@ enum KeyboardLanguage {
   korean,
 }
 
+enum VirtualKeyboardLayoutType {
+  qwerty,
+  numeric,
+}
+
 enum LoginStep {
   otp,
 }

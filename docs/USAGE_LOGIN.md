@@ -1,29 +1,52 @@
 # 로그인 소개
 로그인, 로그아웃 방법에 대해 소개합니다.
 
-- [로그인](#로그인)
+- [로그인 (OTP)](#로그인-otp)
 - [로그아웃](#로그아웃)
 
-# 로그인
-1. 홈 화면에서 :leftwards_arrow_with_hook: 버튼을 눌러 사이드바 메뉴룰 활성화하고 로그인 버튼을 누릅니다. 
+# 로그인 (OTP)
+
+TV에서는 **일회용 로그인 번호(OTP)** 방식을 사용합니다. OTP 유효 시간은 **약 20초**입니다.
+
+## 준비
+
+1. 휴대폰 **네이버 앱** 실행
+2. **설정 > 로그인 아이디 관리 > 더보기 > 일회용 로그인 번호**에서 8자리 번호 발급
+3. 번호 발급 **직후** TV에서 입력 시작
+
+> [!TIP]
+> 번호를 먼저 발급한 뒤 TV에 입력하세요. 8자리를 모두 입력하면 **자동으로 로그인**됩니다.
+
+## TV에서 로그인
+
+1. 홈 화면에서 :leftwards_arrow_with_hook: 버튼으로 사이드바를 연 뒤 **로그인** 선택
 
 <p align="left">
     <img src="../images/usage/login/login_01_resize.png" width="600" >
 </p>
 
-2. 아이디 비밀번호를 입력합니다. 2단계 인증이 설정되어 있는 경우 모바일 알림을 확인하여 2단계 인증을 진행합니다.
-<p float="left">
-    <img src="../images/usage/login/login_02_resize.png" width="400" >
-    <img src="../images/usage/login/login_04_resize.png" width="400" >
-</p>
+2. 화면 하단 **숫자 키패드**로 8자리 입력 (표시: `1234 5678`)
+   - :ok: 숫자 키로 입력
+   - **지움**: 마지막 숫자 삭제
+   - **입력**: 8자리 미만일 때만 수동 제출 (8자리 완료 시 자동 제출)
 
-3. 비밀번호를 연속해서 틀리거나, 보안 문제가 발생하면 CAPTCHA 문제가 나옵니다. 정답을 입력합니다.
-<p align="left">
-    <img src="../images/usage/login/login_03_resize.png" width="600" >
-</p>
+3. 로그인 성공 시 홈 화면으로 이동합니다. **로그인 상태 유지**는 기본 활성화됩니다.
+
+## 문제 해결
+
+| 증상 | 조치 |
+|------|------|
+| OTP 시간 초과 | 휴대폰에서 번호 **재발급** 후 다시 입력 |
+| 로그인 후 바로 풀림 | 최신 버전(v0.3.4+4+) 설치 여부 확인 |
+| 2단계 인증 | 네이버 앱 알림 승인 후 OTP 재시도 |
+
+> [!CAUTION]
+> 보안을 위해 네이버 **2단계 인증** 사용을 권장합니다.
+
+개발/기술 상세: [OTP_LOGIN_IMPROVEMENTS.md](OTP_LOGIN_IMPROVEMENTS.md)
 
 # 로그아웃
-1. 홈 화면에서 :leftwards_arrow_with_hook: 버튼을 눌러 사이드바 메뉴룰 활성화하고 프로필을 누릅니다. 
+1. 홈 화면에서 :leftwards_arrow_with_hook: 버튼을 눌러 사이드바 메뉴를 활성화하고 프로필을 누릅니다.
 
 <p align="left">
     <img src="../images/usage/login/login_05_resize.png" width="600" >

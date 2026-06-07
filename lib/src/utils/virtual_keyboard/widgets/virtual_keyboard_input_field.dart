@@ -15,11 +15,17 @@ class VirtualKeyboardInputField extends ConsumerWidget
     super.key,
     required this.routeName,
     this.isObscure = false,
+    this.groupSize,
+    this.groupSeparator = ' ',
   });
 
   final String routeName;
   /// Hide text when input password.
   final bool isObscure;
+
+  /// e.g. 4 → `1234 5678`
+  final int? groupSize;
+  final String groupSeparator;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,11 +39,15 @@ class VirtualKeyboardInputField extends ConsumerWidget
             ? '*' * (textLength - 1) + inputText[textLength - 1]
             : inputText;
 
+    final String displayText = groupSize == null
+        ? replacedText
+        : _formatGrouped(replacedText, groupSize!, groupSeparator);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // text
-        _textWidget(replacedText),
+        _textWidget(displayText),
         // cursor
         const VirtualKeyboardCursorPointer(),
       ],
@@ -55,5 +65,18 @@ class VirtualKeyboardInputField extends ConsumerWidget
         ),
       ),
     );
+  }
+
+  String _formatGrouped(String text, int groupSize, String separator) {
+    if (text.isEmpty) return '';
+
+    final buffer = StringBuffer();
+    for (var i = 0; i < text.length; i++) {
+      if (i > 0 && i % groupSize == 0) {
+        buffer.write(separator);
+      }
+      buffer.write(text[i]);
+    }
+    return buffer.toString();
   }
 }

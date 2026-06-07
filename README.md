@@ -21,7 +21,7 @@
         - [네트워크 설치](docs/INSTALL.md)
     - [앱 사용 방법](#앱-사용-방법)
         - [홈 화면](docs/USAGE_HOME.md)
-        - [로그인](docs/USAGE_LOGIN.md)
+        - [로그인 (OTP)](docs/USAGE_LOGIN.md)
         - [검색](docs/USAGE_SEARCH.md)
         - [채널](docs/USAGE_CHANNEL.md)
         - [카테고리](docs/USAGE_CATEGORY.md)
@@ -31,13 +31,14 @@
         - [설정](docs/USAGE_SETTING.md)
 - [패치노트](#패치노트)
 - [사용 가능한 기능](#사용-가능한-기능)
+- [개발 문서](#개발-문서)
 - [기타 안내 사항](#기타-안내-사항)
 
 # 사용 방법
 ## 다운로드
-APK 파일 [다운로드] (v0.3.4+1)
+APK 파일 [다운로드] (v0.3.4+4)
 
-위 링크에서 APK 파일을 다운로드하여 TV로 옮겨 설치합니다. 대부분의 TV에서 **v7a** 버전으로 사용 가능합니다.
+위 링크에서 APK 파일을 다운로드하여 TV로 옮겨 설치합니다. 대부분의 TV에서 **arm64-v8a** 또는 **armeabi-v7a** APK를 사용할 수 있습니다.
 
 ## 설치 방법
 > [!CAUTION]
@@ -47,7 +48,7 @@ APK 파일 [다운로드] (v0.3.4+1)
 > 설치에 문제가 있을 경우 [개발자 모드]로 변경 후 설치를 진행합니다.
 >
 > [설치 방법](docs/INSTALL.md)
-> 
+>
 > [파일 관리자+](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager&hl=ko), [Send Files To TV](https://play.google.com/store/apps/details?id=com.yablio.sendfilestotv&hl=en_US)와 같은 파일 전송 앱을 사용하여 설치합니다.
 
 ## 앱 사용 방법
@@ -55,7 +56,7 @@ APK 파일 [다운로드] (v0.3.4+1)
 리모컨 6개 ( :arrow_up: 위, :arrow_down: 아래, :arrow_left: 좌, :arrow_right: 우, :ok: 확인, :leftwards_arrow_with_hook: 뒤로가기 ) 버튼을 사용하여 조작합니다.
 
 - [홈 화면](docs/USAGE_HOME.md)
-- [로그인](docs/USAGE_LOGIN.md)
+- [로그인 (OTP)](docs/USAGE_LOGIN.md) — 휴대폰 네이버 앱에서 발급한 **8자리 일회용 번호** 입력 (유효 약 20초)
 - [검색](docs/USAGE_SEARCH.md)
 - [채널](docs/USAGE_CHANNEL.md)
 - [카테고리](docs/USAGE_CATEGORY.md)
@@ -64,11 +65,12 @@ APK 파일 [다운로드] (v0.3.4+1)
 - [그룹](docs/USAGE_GROUP.md)
 - [설정](docs/USAGE_SETTINGS.md)
 
-# 패치노트 
-[v0.3.4+1](docs/CHANGELOG.md)
+# 패치노트
+[v0.3.4+4](docs/CHANGELOG.md) — OTP 로그인 UX·안정성 개선
 
 # 사용 가능한 기능
-- 로그인 (Webview 이용)
+- 로그인 (OTP 일회용 번호, WebView)
+- 로그인 상태 유지 (앱 재시작 후 세션 복원)
 - 채널 검색, 태그 검색
 - 팔로잉 채널, 카테고리
 - 인기, 팔로우, 카테고리 채널 라이브
@@ -76,11 +78,16 @@ APK 파일 [다운로드] (v0.3.4+1)
 - 라이브(멀티뷰) 시청
 - VOD 시청
 - 채팅 보기
+- GitHub Actions 자동 릴리즈 빌드 (`v*` 태그)
 - 기타
+
+# 개발 문서
+- [OTP 로그인 개선 내역](docs/OTP_LOGIN_IMPROVEMENTS.md)
+- [변경 이력](docs/CHANGELOG.md)
 
 # 기타 안내 사항
 > [!NOTE]
-> U+(유플러스) 셋톱박스(또는 다른 TV)에서 리모컨 확인 버튼이 작동하지 않는 경우에 모바일 리모컨 어플리케이션을 사용해주세요. 
+> U+(유플러스) 셋톱박스(또는 다른 TV)에서 리모컨 확인 버튼이 작동하지 않는 경우에 모바일 리모컨 어플리케이션을 사용해주세요.
 >
 > [**U+tv리모컨앱 정보**](https://www.lguplus.com/iptv/main-feature/000PPT0036), [**U+tv리모컨앱 iOS**](https://apps.apple.com/kr/app/u-tv-%EB%A6%AC%EB%AA%A8%EC%BB%A8%EC%95%B1/id1637815745), [**U+tv리모컨앱 Android**](https://play.google.com/store/apps/details?id=com.lguplus.remocon&hl=ko&gl=US)
 
@@ -88,5 +95,5 @@ APK 파일 [다운로드] (v0.3.4+1)
 > [!CAUTION]
 > 보안을 위해 네이버 로그인 2단계 인증을 사용해주세요.
 
-[다운로드]: https://github.com/Escaper-Park/unofficial_chzzk_android_tv/releases/tag/v0.3.4+1
+[다운로드]: https://github.com/Escaper-Park/unofficial_chzzk_android_tv/releases/tag/v0.3.4+4
 [치지직]: https://chzzk.naver.com/

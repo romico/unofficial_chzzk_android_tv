@@ -3,6 +3,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import './controller/auth_controller.dart';
+import './repository/auth_repository.dart';
 import './widgets/naver_login_scripts.dart';
 import '../user/controller/user_controller.dart';
 import '../../common/constants/enums.dart';
@@ -28,6 +29,11 @@ mixin class AuthEvent {
 
     if (currentPathStr == "https://chzzk.naver.com/" ||
         currentPathStr == "https://m.chzzk.naver.com") {
+      try {
+        await ref.read(authRepositoryProvider).persistLoginCookies();
+      } catch (e, st) {
+        debugPrint('[AuthEvent] persistLoginCookies error: $e\n$st');
+      }
       authControllerInvalidate(ref);
       userControllerInvalidate(ref);
 
@@ -45,12 +51,13 @@ mixin class AuthEvent {
     WidgetRef ref, {
     required InAppWebViewController? controller,
     required String inputText,
+    int requiredLength = 8,
   }) async {
-    if (inputText.isNotEmpty && controller != null) {
-      await _runJS(controller, NaverLoginSource.inputOtp(inputText));
-      await _runJS(controller, NaverLoginSource.clickOtpLoginButton);
-      _resetInput(ref);
-    }
+    if (inputText.length != requiredLength || controller == null) return;
+
+    await _runJS(controller, NaverLoginSource.inputOtp(inputText));
+    await _runJS(controller, NaverLoginSource.clickOtpLoginButton);
+    _resetInput(ref);
   }
 
   Future<void> toggleKeepLogin(InAppWebViewController controller) async {

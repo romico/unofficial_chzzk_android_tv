@@ -9,6 +9,7 @@ class VirtualKeyboardKey extends StatelessWidget {
   const VirtualKeyboardKey({
     super.key,
     this.autofocus = false,
+    this.focusNode,
     this.padding = const EdgeInsets.all(5.0),
     this.fontColor = AppColors.whiteColor,
     this.fontSize = 14.0,
@@ -19,6 +20,7 @@ class VirtualKeyboardKey extends StatelessWidget {
   });
 
   final bool autofocus;
+  final FocusNode? focusNode;
   final EdgeInsetsGeometry padding;
   final Color fontColor;
   final double fontSize;
@@ -35,6 +37,7 @@ class VirtualKeyboardKey extends StatelessWidget {
   Widget build(BuildContext context) {
     return FocusedOutlinedButton(
       autofocus: autofocus,
+      focusNode: focusNode,
       borderRadius: borderRadius,
       padding: padding,
       onPressed: () {

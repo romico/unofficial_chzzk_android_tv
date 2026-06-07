@@ -4,7 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../common/constants/api.dart' show BaseUrl;
-import '../../common/constants/enums.dart' show AppRoute, LoginStep;
+import '../../common/constants/enums.dart' show AppRoute, LoginStep, VirtualKeyboardLayoutType;
 import '../../common/constants/dimensions.dart' show Dimensions;
 import '../../common/widgets/ui/ui_widgets.dart' show CenteredText;
 import '../../common/widgets/screen/screen_widgets.dart';

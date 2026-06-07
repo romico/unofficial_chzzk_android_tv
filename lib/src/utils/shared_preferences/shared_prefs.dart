@@ -20,4 +20,8 @@ abstract class SharedPrefsDBKey {
 
   // group
   static const String group = 'group';
+
+  /// Naver login cookies backup
+  static const String authNidAut = 'auth_nid_aut';
+  static const String authNidSes = 'auth_nid_ses';
 }

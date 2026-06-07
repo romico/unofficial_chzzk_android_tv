@@ -242,4 +242,20 @@ abstract class VirtualKeyboardData {
     '?',
     'ENTER',
   ];
+
+  /// OTP 등 숫자만 입력하는 3x4 키패드.
+  static const List<String> numericKeys = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    'BACK',
+    '0',
+    'ENTER',
+  ];
 }

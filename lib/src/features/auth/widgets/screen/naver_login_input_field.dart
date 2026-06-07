@@ -5,6 +5,10 @@ class _NaverLoginInputField extends ConsumerWidget with AuthState {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return VirtualKeyboardInputField(isObscure: false, routeName: AppRoute.auth.routeName);
+    return VirtualKeyboardInputField(
+      isObscure: false,
+      routeName: AppRoute.auth.routeName,
+      groupSize: 4,
+    );
   }
 }

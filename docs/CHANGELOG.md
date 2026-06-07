@@ -3,6 +3,15 @@
 
 ## [v0.3.4](https://github.com/Escaper-Park/unofficial_chzzk_android_tv/releases/tag/v0.3.4)
 ### HotFix
+#### v0.3.4+4
+* OTP 일회용 번호 로그인 UX 개선 (숫자 키패드, 8자리 자동 제출, 4-4 표시)
+* OTP 로그인 크래시 및 앱 재시작 시 로그인 유지 문제 수정
+* Android TV WebView 쿠키 API 호환성 개선
+
+#### v0.3.4+3
+* OTP 로그인 시 getUserStatus 파싱 크래시 수정
+* GitHub Actions 릴리즈 자동 배포
+
 #### v0.3.4+1
 * 치지직 API 업데이트로 인한 재생 불가능 현상 수정 (2025-07-02)
 * 그룹 라이브 목록이 보이지 않는 현상 수정 (2025-07-05)

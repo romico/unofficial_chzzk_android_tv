@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/user.dart';
 import '../repository/user_repository.dart';
-import '../../auth/repository/auth_repository.dart';
+import '../../auth/controller/auth_controller.dart';
 import '../../../utils/dio/dio_client.dart';
 
 part 'user_controller.g.dart';
@@ -14,6 +14,9 @@ class UserController extends _$UserController {
 
   @override
   FutureOr<User?> build() async {
+    final auth = await ref.watch(authControllerProvider.future);
+    if (auth == null) return null;
+
     final Dio dio = ref.watch(dioClientProvider);
     _repository = UserRepository(dio);
 
@@ -21,20 +24,21 @@ class UserController extends _$UserController {
   }
 
   Future<User?> fetchUser() async {
+    final auth = ref.read(authControllerProvider).value;
+    if (auth == null) return null;
+
     try {
       final User? user = await _repository.getUser();
 
       if (user == null ||
           user.userIdHash == null ||
           user.nickname == null) {
-        await ref.watch(authRepositoryProvider).deleteCookies();
         return null;
       }
 
       return user;
     } catch (e, st) {
       debugPrint('[UserController] fetchUser error: $e\n$st');
-      await ref.watch(authRepositoryProvider).deleteCookies();
       return null;
     }
   }

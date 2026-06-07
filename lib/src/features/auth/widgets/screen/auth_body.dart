@@ -62,6 +62,9 @@ class _AuthBodyState extends ConsumerState<_AuthBody>
   Widget _virtualKeyboardLayout() {
     return VirtualKeyboardLayout(
       routeName: AppRoute.auth.routeName,
+      layoutType: VirtualKeyboardLayoutType.numeric,
+      maxInputLength: 8,
+      autoSubmitOnMaxLength: true,
       enterKeyName: '입력',
       onEnterPressed: (String inputText) {
         onKeyboardEnterPressed(
