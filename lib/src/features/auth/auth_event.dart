@@ -50,7 +50,6 @@ mixin class AuthEvent {
       await _runJS(controller, NaverLoginSource.inputOtp(inputText));
       await _runJS(controller, NaverLoginSource.clickOtpLoginButton);
       _resetInput(ref);
-      await _trySignIn(ref);
     }
   }
 
@@ -73,10 +72,5 @@ mixin class AuthEvent {
               .notifier,
         )
         .reset();
-  }
-
-  Future<void> _trySignIn(WidgetRef ref) async {
-    await ref.read(authControllerProvider.notifier).signIn();
-    await ref.read(userControllerProvider.notifier).signIn();
   }
 }

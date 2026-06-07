@@ -87,7 +87,7 @@ class _UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nickname = user == null ? '에러' : user!.nickname;
+    final nickname = user?.nickname ?? '알 수 없음';
 
     return ResponsiveSidebarTile(
       autofocus: false,

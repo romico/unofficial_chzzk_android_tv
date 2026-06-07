@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/user.dart';
@@ -20,15 +21,22 @@ class UserController extends _$UserController {
   }
 
   Future<User?> fetchUser() async {
-    final User? user = await _repository.getUser();
+    try {
+      final User? user = await _repository.getUser();
 
-    // Error handling
-    if (user == null || user.userIdHash == null) {
+      if (user == null ||
+          user.userIdHash == null ||
+          user.nickname == null) {
+        await ref.watch(authRepositoryProvider).deleteCookies();
+        return null;
+      }
+
+      return user;
+    } catch (e, st) {
+      debugPrint('[UserController] fetchUser error: $e\n$st');
       await ref.watch(authRepositoryProvider).deleteCookies();
       return null;
     }
-
-    return user;
   }
 
   Future<void> signIn() async {

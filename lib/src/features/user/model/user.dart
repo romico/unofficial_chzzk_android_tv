@@ -10,7 +10,7 @@ class User with _$User {
 
     /// UID for chat service.
     String? userIdHash,
-    required String nickname,
+    String? nickname,
     String? profileImageUrl,
 
     /// partner streamer

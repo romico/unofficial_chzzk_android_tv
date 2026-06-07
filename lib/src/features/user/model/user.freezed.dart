@@ -24,7 +24,7 @@ mixin _$User {
 
   /// UID for chat service.
   String? get userIdHash => throw _privateConstructorUsedError;
-  String get nickname => throw _privateConstructorUsedError;
+  String? get nickname => throw _privateConstructorUsedError;
   String? get profileImageUrl => throw _privateConstructorUsedError;
 
   /// partner streamer
@@ -47,7 +47,7 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {bool hasProfile,
       String? userIdHash,
-      String nickname,
+      String? nickname,
       String? profileImageUrl,
       bool verifiedMark});
 }
@@ -69,7 +69,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? hasProfile = null,
     Object? userIdHash = freezed,
-    Object? nickname = null,
+    Object? nickname = freezed,
     Object? profileImageUrl = freezed,
     Object? verifiedMark = null,
   }) {
@@ -82,10 +82,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.userIdHash
           : userIdHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      nickname: null == nickname
+      nickname: freezed == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profileImageUrl: freezed == profileImageUrl
           ? _value.profileImageUrl
           : profileImageUrl // ignore: cast_nullable_to_non_nullable
@@ -108,7 +108,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {bool hasProfile,
       String? userIdHash,
-      String nickname,
+      String? nickname,
       String? profileImageUrl,
       bool verifiedMark});
 }
@@ -127,7 +127,7 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? hasProfile = null,
     Object? userIdHash = freezed,
-    Object? nickname = null,
+    Object? nickname = freezed,
     Object? profileImageUrl = freezed,
     Object? verifiedMark = null,
   }) {
@@ -140,10 +140,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.userIdHash
           : userIdHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      nickname: null == nickname
+      nickname: freezed == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profileImageUrl: freezed == profileImageUrl
           ? _value.profileImageUrl
           : profileImageUrl // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ class _$UserImpl implements _User {
   const _$UserImpl(
       {required this.hasProfile,
       this.userIdHash,
-      required this.nickname,
+      this.nickname,
       this.profileImageUrl,
       required this.verifiedMark});
 
@@ -176,7 +176,7 @@ class _$UserImpl implements _User {
   @override
   final String? userIdHash;
   @override
-  final String nickname;
+  final String? nickname;
   @override
   final String? profileImageUrl;
 
@@ -231,7 +231,7 @@ abstract class _User implements User {
   const factory _User(
       {required final bool hasProfile,
       final String? userIdHash,
-      required final String nickname,
+      final String? nickname,
       final String? profileImageUrl,
       required final bool verifiedMark}) = _$UserImpl;
 
@@ -244,7 +244,7 @@ abstract class _User implements User {
   @override
   String? get userIdHash;
   @override
-  String get nickname;
+  String? get nickname;
   @override
   String? get profileImageUrl;
 
